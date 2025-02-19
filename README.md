@@ -4,6 +4,21 @@
 
 Automate the deployment of Laravel applications with this simple and flexible shell script. Designed for seamless **Continuous Deployment (CD)** on Linux servers.
 
+***Features List:***
+- Detects OS Type (Debian, RHEL, or Auto) to prepare for Laravel deployment.
+- Creates Backups of code and database before deploying a new version (reads .env automatically, no need to enter credentials).
+- Checks Scheduler to make sure the Laravel cron job is installed and working.
+- Sets Up Storage directories and symlink for Laravel filesystem.
+- Clears & Optimizes Cache (views, config, cache, etc.).
+- Runs Migrations & Seeding (can be disabled if not needed).
+- Restarts Supervisor and all queue workers to apply changes.
+- Checks Laravel Folder Structure for missing directories like storage/logs.
+- Enables Maintenance Mode before deployment and disables it after (can be turned off).
+- Fixes Folder Permissions if anything is not set correctly.
+- Checks & Configures SELinux for correct file permissions.
+- Installs Composer Packages when new dependencies are added.
+- Shows a Summary of server status after deployment is done.
+
 ## Supported Linux Distributions
 
 This script is compatible with all modern Linux distributions, including:
