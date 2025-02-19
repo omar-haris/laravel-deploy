@@ -30,7 +30,7 @@ chmod +x laravel-deploy.sh
 ### 3️⃣ Run the Script
 
 ```bash
-./laravel-deploy.sh
+./laravel-deploy.sh -h
 ```
 
 That’s it! The script will execute the deployment process and display a summary upon completion.
