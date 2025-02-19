@@ -1,5 +1,7 @@
 # laravel-deploy.sh
 
+![Laravel Deployment](laravel.gif)
+
 Automate the deployment of Laravel applications with this simple and flexible shell script. Designed for seamless **Continuous Deployment (CD)** on Linux servers.
 
 ## Supported Linux Distributions
