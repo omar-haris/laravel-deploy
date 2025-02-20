@@ -69,7 +69,7 @@ chmod +x laravel-deploy.sh
 ```bash
 ./laravel-deploy.sh \
   --git-url=https://github.com/your/repo.git \
-  --env-file=your-env-file.env \
+  --env-file=your-laravel-project-env-file.env \
   --project-dir=/var/www/laravel \
   --branch=main
 ```
