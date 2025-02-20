@@ -125,16 +125,29 @@ After deployment, a summary like this will be displayed:
 Deployment Summary:
 --------------------------------------------------------
   DEBUG_MODE          : false
+  UNSECURE_MODE       : false
   OS_TYPE             : auto
   WEB_USER            : www-data
   PROJECT_DIR         : /var/www/laravel
   GIT_URL             : '(none)'
+  ENV_FILE_PATH       : '(none)'
   BRANCH              : main
   Last Commit ID      : cc316d6
-  Code Backup         : /var/backups/laravel/code.tar.gz
-  DB Backup           : /var/backups/laravel/db.sql.gz
+  Last Commit Msg     : Added images
+  Code Backup         : /var/backups/laravel/20250220_050124/code.tar.gz
+  DB Backup           : /var/backups/laravel/20250220_050124/db.sql.gz
   PHP Version         : PHP 8.1.31
-  Disk Usage          : 4.3G / 75G (Free: 68G)
+  DB Version          : MySQL/MariaDB: 8.0.41-0ubuntu0.24.04.1
+  Disk Usage          : 4.4G / 75G (Free: 68G) on /
+  ENABLE_BACKUP       : true
+  ENABLE_MAINTENANCE  : true
+  RUN_MIGRATIONS      : true
+  CLEAR_CACHE         : true
+  SET_PERMISSIONS     : true
+  RESTART_SUPERVISOR  : true
+  CHECK_CRON          : true
+  CHECK_CHCON         : true
+  CREATE_STORAGE_LINK : true
 --------------------------------------------------------
 ```
 
