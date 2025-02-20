@@ -1,78 +1,80 @@
-# laravel-deploy.sh
+# 🚀 Laravel Deployment Script
 
 ![Laravel Deployment](laravel.gif)
 
-Automate the deployment of Laravel applications with this simple and flexible shell script. Designed for seamless **Continuous Deployment (CD)** on Linux servers.
+Easily automate your **Laravel** deployments with this flexible shell script. Designed for seamless **Continuous Deployment (CD)** on Linux servers.
 
-***Features List:***
-- Detects OS Type (Debian, RHEL, or Auto) to prepare for Laravel deployment.
-- Creates Backups of code and database before deploying a new version (reads .env automatically, no need to enter credentials).
-- Checks Scheduler to make sure the Laravel cron job is installed and working.
-- Sets Up Storage directories and symlink for Laravel filesystem.
-- Clears & Optimizes Cache (views, config, cache, etc.).
-- Runs Migrations & Seeding (can be disabled if not needed).
-- Restarts Supervisor and all queue workers to apply changes.
-- Checks Laravel Folder Structure for missing directories like storage/logs.
-- Enables Maintenance Mode before deployment and disables it after (can be turned off).
-- Fixes Folder Permissions if anything is not set correctly.
-- Checks & Configures SELinux for correct file permissions.
-- Installs Composer Packages when new dependencies are added.
-- Shows a Summary of server status after deployment is done.
+## ✨ Features
 
-## Supported Linux Distributions
+✅ **OS Detection**: Auto-detects **Debian**, **RHEL**, or lets you choose manually.  
+✅ **Backup System**: Automatically backs up **code & database** before deploying.  
+✅ **Scheduler Check**: Ensures the **Laravel cron job** is installed and running.  
+✅ **Storage & Permissions**: Sets up Laravel **storage** directories and fixes permissions.  
+✅ **Cache Optimization**: Clears and optimizes **views, config, routes, etc.**  
+✅ **Database Migrations**: Runs migrations & seeding (can be skipped).  
+✅ **Queue Management**: Restarts **Supervisor & queue workers** after deployment.  
+✅ **Maintenance Mode**: Enables during deployment and disables after (optional).  
+✅ **SELinux Handling**: Configures correct file permissions automatically.  
+✅ **Dependency Installation**: Installs new Composer packages when needed.  
+✅ **Deployment Summary**: Displays a **detailed status report** post-deployment.
 
-This script is compatible with all modern Linux distributions, including:
+---
+
+## 🖥️ Supported Linux Distributions
+
+This script works with all major Linux distributions:
 
 ```text
-Ubuntu, Debian, Rocky Linux, AlmaLinux, CentOS, RHEL
+✅ Ubuntu
+✅ Debian
+✅ Rocky Linux
+✅ AlmaLinux
+✅ CentOS
+✅ RHEL
 ```
 
-## Getting Started
+---
 
-### 1️⃣ Clone This Repository
+## 🚀 Getting Started
 
+### 📥 1️⃣ Clone This Repository
 ```bash
 git clone https://github.com/omar-haris/laravel-deploy.git
 cd laravel-deploy
 ```
 
-### 2️⃣ Make the Script Executable
-
+### 🔑 2️⃣ Make the Script Executable
 ```bash
 chmod +x laravel-deploy.sh
 ```
 
-### 3️⃣ Run the Script
-
+### ▶️ 3️⃣ Run the Script
 ```bash
 ./laravel-deploy.sh -h
 ```
+💡 **Tip:** Run `-h` to see all available options.
 
-That’s it! The script will execute the deployment process and display a summary upon completion.
+---
 
-## Deployment Options
+## 🛠️ Deployment Options
 
-### Existing Project Deployment
-
+### 🌍 **Deploy an Existing Project**
 ```bash
 ./laravel-deploy.sh \
   --project-dir=/var/www/laravel \
   --branch=main
 ```
 
-
-### New Project Deployment
-
+### 🆕 **Deploy a New Project from Git**
 ```bash
 ./laravel-deploy.sh \
   --git-url=https://github.com/your/repo.git \
-  --env-file=laravel-config-file-if-a-repo-used-no-need-if-dir-already-exists.env \
+  --env-file=your-env-file.env \
   --project-dir=/var/www/laravel \
   --branch=main
 ```
 
-### Debug Mode
-
+### 🐛 **Debug Mode**
 ```bash
 # Mask sensitive information (default)
 ./laravel-deploy.sh --debug
@@ -81,77 +83,54 @@ That’s it! The script will execute the deployment process and display a summar
 ./laravel-deploy.sh --debug --unsecure
 ```
 
-## Available Options
+---
 
-```bash
-Usage: ./laravel-deploy.sh [OPTIONS]
+## ⚙️ Available Options
 
-  --git-url=URL               Clone from this URL if the project directory is empty
-  --env-file=PATH             Provide .env file for fresh clones (required with --git-url)
-  --debug                     Print commands (masks DB password/IP by default)
-  --unsecure                  Reveal actual DB password/IP (use with --debug)
-  
-  --no-backup                 Skip backup of code and database
-  --no-maintenance            Skip enabling maintenance mode
-  --no-migrate                Skip running database migrations
-  --no-cache-clear            Skip cache clearing and optimization
-  --no-permissions            Skip setting file/folder permissions
-  --no-supervisor             Skip restarting Supervisor
-  --no-storage-link           Skip creating storage symlink
-  
-  --check-cron                Verify Laravel's cron configuration (default: true)
-  --check-chcon               Check SELinux & apply contexts (default: true)
-  
-  --os-type=[auto|debian|rhel] Auto-detect or specify OS type (default: auto)
-  --project-dir=PATH          Define the project directory (default: /var/www/laravel)
-  --web-user=USER             Set the web server user (default: www-data)
-  --branch=BRANCH             Specify deployment branch (default: main)
-  --backup-dir=PATH           Set backup directory (default: /var/backups/laravel)
-  --keep-backups=NUMBER       Number of backups to retain (default: 7)
-  --php-bin=PATH              Specify PHP binary path (default: /usr/bin/php)
-  --composer-bin=PATH         Define Composer binary path (default: /usr/local/bin/composer)
+| Option | Description |
+|--------|-------------|
+| `--git-url=URL` | Clone the project if the directory is empty |
+| `--env-file=PATH` | Provide `.env` for fresh clones |
+| `--debug` | Print commands (masks DB credentials by default) |
+| `--unsecure` | Reveal actual DB credentials (use with `--debug`) |
+| `--no-backup` | Skip backup of code & database |
+| `--no-maintenance` | Skip enabling maintenance mode |
+| `--no-migrate` | Skip running migrations |
+| `--no-cache-clear` | Skip clearing and optimizing cache |
+| `--no-permissions` | Skip setting folder permissions |
+| `--no-supervisor` | Skip restarting Supervisor |
+| `--check-cron` | Verify Laravel's cron configuration (default: true) |
+| `--os-type=[auto|debian|rhel]` | Auto-detect or specify OS (default: auto) |
+| `--project-dir=PATH` | Define the Laravel project directory |
+| `--branch=BRANCH` | Specify deployment branch (default: `main`) |
 
-  -h, --help                  Display help message and exit
-```
+---
 
-## Deployment Summary Output
+## 📊 Deployment Summary Output
 
-Upon successful deployment, a summary report will be displayed:
+After deployment, a summary like this will be displayed:
 
 ```bash
 --------------------------------------------------------
 Deployment Summary:
 --------------------------------------------------------
   DEBUG_MODE          : false
-  UNSECURE_MODE       : false
   OS_TYPE             : auto
   WEB_USER            : www-data
   PROJECT_DIR         : /var/www/laravel
   GIT_URL             : '(none)'
-  ENV_FILE_PATH       : '(none)'
   BRANCH              : main
   Last Commit ID      : cc316d6
-  Last Commit Msg     : Added images
-  Code Backup         : /var/backups/laravel/20250219_180725/code.tar.gz
-  DB Backup           : /var/backups/laravel/20250219_180725/db.sql.gz
-  
+  Code Backup         : /var/backups/laravel/code.tar.gz
+  DB Backup           : /var/backups/laravel/db.sql.gz
   PHP Version         : PHP 8.1.31
-  DB Version          : MySQL/MariaDB: 8.0.41-0ubuntu0.24.04.1
-  Disk Usage          : 4.3G / 75G (Free: 68G) on /
-  
-  ENABLE_BACKUP       : true
-  ENABLE_MAINTENANCE  : true
-  RUN_MIGRATIONS      : true
-  CLEAR_CACHE         : true
-  SET_PERMISSIONS     : true
-  RESTART_SUPERVISOR  : true
-  CHECK_CRON          : true
-  CHECK_CHCON         : true
-  CREATE_STORAGE_LINK : true
+  Disk Usage          : 4.3G / 75G (Free: 68G)
 --------------------------------------------------------
 ```
 
-## License
+---
+
+## 📜 License
 
 This project is licensed under the **MIT License**.
 
@@ -162,18 +141,7 @@ The MIT License (MIT)
 © 2025 Omar Haris
 
 Permission is granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"),
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, subject to the following conditions:
+of this software to use, modify, distribute, and sell copies.
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-DAMAGES, OR OTHER LIABILITY, ARISING FROM, OUT OF, OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ```
-
