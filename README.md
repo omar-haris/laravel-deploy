@@ -18,7 +18,7 @@ Easily automate your **Laravel** deployments with this flexible shell script. De
 ✅ **Dependency Installation**: Installs new Composer packages when needed.  
 ✅ **Deployment Summary**: Displays a **detailed status report** post-deployment.
 
----
+
 
 ## 🖥️ Supported Linux Distributions
 
@@ -33,7 +33,6 @@ This script works with all major Linux distributions:
 ✅ RHEL
 ```
 
----
 
 ## 🚀 Getting Started
 
@@ -54,7 +53,6 @@ chmod +x laravel-deploy.sh
 ```
 💡 **Tip:** Run `-h` to see all available options.
 
----
 
 ## 🛠️ Deployment Options
 
@@ -83,7 +81,6 @@ chmod +x laravel-deploy.sh
 ./laravel-deploy.sh --debug --unsecure
 ```
 
----
 
 ## ⚙️ Available Options
 
@@ -113,8 +110,6 @@ chmod +x laravel-deploy.sh
 | `--unsecure`             | `false`                       | Used with `--debug` to reveal sensitive data (like DB passwords). **Not recommended for production!** |
 | `-h, --help`             | `false`                       | Display help information and exit. Run `./laravel-deploy.sh --help` to see usage details. |
 
-
----
 
 ## 📊 Deployment Summary Output
 
@@ -151,7 +146,6 @@ Deployment Summary:
 --------------------------------------------------------
 ```
 
----
 
 ## 📜 License
 
