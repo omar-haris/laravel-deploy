@@ -87,22 +87,32 @@ chmod +x laravel-deploy.sh
 
 ## ⚙️ Available Options
 
-| Option | Description |
-|--------|-------------|
-| `--git-url=URL` | Clone the project if the directory is empty |
-| `--env-file=PATH` | Provide `.env` for fresh clones |
-| `--debug` | Print commands (masks DB credentials by default) |
-| `--unsecure` | Reveal actual DB credentials (use with `--debug`) |
-| `--no-backup` | Skip backup of code & database |
-| `--no-maintenance` | Skip enabling maintenance mode |
-| `--no-migrate` | Skip running migrations |
-| `--no-cache-clear` | Skip clearing and optimizing cache |
-| `--no-permissions` | Skip setting folder permissions |
-| `--no-supervisor` | Skip restarting Supervisor |
-| `--check-cron` | Verify Laravel's cron configuration (default: true) |
-| `--os-type=[auto|debian|rhel]` | Auto-detect or specify OS (default: auto) |
-| `--project-dir=PATH` | Define the Laravel project directory |
-| `--branch=BRANCH` | Specify deployment branch (default: `main`) |
+| Option                   | Default Value                   | Description                                         |
+|--------------------------|--------------------------------|-----------------------------------------------------|
+| `--project-dir=PATH`     | `/var/www/laravel`            | Set the directory where the Laravel application is deployed. Use an absolute path. |
+| `--deploy-script=PATH`   | `/var/www/larave-deploy.sh`   | Path to the deployment script. Typically, this is the script being executed. |
+| `--os-type=[auto|debian|rhel]` | `auto`                | Automatically detect OS type or force it to `debian` or `rhel` (Red Hat-based systems). |
+| `--web-user=USER`        | `www-data`                    | Specify the web server user. Use `apache` for RHEL-based systems and `www-data` for Debian-based systems. |
+| `--branch=BRANCH`        | `main`                        | Define the Git branch to deploy. Use this to switch between different code versions. |
+| `--backup-dir=PATH`      | `/var/backups/laravel`        | Set the directory where backups will be stored. Provide an absolute path. |
+| `--keep-backups=NUMBER`  | `7`                           | Specify the number of old backups to keep before deleting older ones. |
+| `--git-url=URL`          | `""`                          | Provide a Git repository URL for cloning if the project directory is empty. |
+| `--env-file=PATH`        | `""`                          | Path to the `.env` file. **Required** when using `--git-url` for fresh clones. |
+| `--php-bin=PATH`         | `/usr/bin/php`                | Set the PHP binary path. Use `which php` to find the correct path. |
+| `--composer-bin=PATH`    | `/usr/local/bin/composer`     | Path to the Composer binary. Useful if Composer is installed in a non-standard location. |
+| `--no-backup`            | `false`                       | Use this flag to skip creating code and database backups before deployment. |
+| `--no-maintenance`       | `false`                       | Skip enabling maintenance mode during deployment. Normally, maintenance mode prevents users from seeing broken pages while updates are applied. |
+| `--no-migrate`           | `false`                       | Skip running Laravel database migrations. Use this if you are sure no migrations are needed. |
+| `--no-cache-clear`       | `false`                       | Skip clearing and optimizing Laravel caches. Useful for quick deployments where caching is needed. |
+| `--no-permissions`       | `false`                       | Skip setting file and folder permissions. Use this if you manually set permissions. |
+| `--no-supervisor`        | `false`                       | Skip restarting Supervisor after deployment. Use this if Supervisor is not used or managed manually. |
+| `--no-storage-link`      | `false`                       | Skip creating a symbolic link for `storage`. Laravel needs this link for file uploads and logs. |
+| `--check-cron`           | `true`                        | Check if Laravel’s cron job (`schedule:run`) is set up. Helps ensure scheduled tasks run automatically. |
+| `--check-chcon`          | `true`                        | Apply SELinux security contexts for Laravel if needed. Relevant for RHEL-based systems with SELinux enabled. |
+| `--debug`                | `false`                       | Enable debug mode to print executed commands (hides sensitive data like passwords by default). |
+| `--unsecure`             | `false`                       | Used with `--debug` to reveal sensitive data (like DB passwords). **Not recommended for production!** |
+| `-h, --help`             | `false`                       | Display help information and exit. Run `./laravel-deploy.sh --help` to see usage details. |
+
 
 ---
 
