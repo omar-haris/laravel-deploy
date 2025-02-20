@@ -4,19 +4,20 @@
 
 Easily automate your **Laravel** deployments with this flexible shell script. Designed for seamless **Continuous Deployment (CD)** on Linux servers.
 
-## ✨ Features
+| Feature               | Status |Description |
+|-------------------------|--|--------------------------------------------------------------|
+| **OS Detection**        | ✅|Auto-detects Debian, RHEL, or allows manual selection.        |
+| **Backup System**       | ✅|Automatically backs up code & database before deploying.     |
+| **Scheduler Check**     | ✅|Ensures the Laravel cron job is installed and running.       |
+| **Storage & Permissions** | ✅|Sets up Laravel storage directories and fixes permissions.  |
+| **Cache Optimization**  | ✅|Clears and optimizes views, config, routes, etc.             |
+| **Database Migrations** | ✅|Runs migrations & seeding (can be skipped).                  |
+| **Queue Management**    | ✅|Restarts Supervisor & queue workers after deployment.        |
+| **Maintenance Mode**    | ✅|Enables during deployment and disables after (optional).     |
+| **SELinux Handling**    | ✅|Configures correct file permissions automatically.           |
+| **Dependency Installation** | ✅|Installs new Composer packages when needed.              |
+| **Deployment Summary**  |✅ |Displays a detailed status report post-deployment.          |
 
-✅ **OS Detection**: Auto-detects **Debian**, **RHEL**, or lets you choose manually.  
-✅ **Backup System**: Automatically backs up **code & database** before deploying.  
-✅ **Scheduler Check**: Ensures the **Laravel cron job** is installed and running.  
-✅ **Storage & Permissions**: Sets up Laravel **storage** directories and fixes permissions.  
-✅ **Cache Optimization**: Clears and optimizes **views, config, routes, etc.**  
-✅ **Database Migrations**: Runs migrations & seeding (can be skipped).  
-✅ **Queue Management**: Restarts **Supervisor & queue workers** after deployment.  
-✅ **Maintenance Mode**: Enables during deployment and disables after (optional).  
-✅ **SELinux Handling**: Configures correct file permissions automatically.  
-✅ **Dependency Installation**: Installs new Composer packages when needed.  
-✅ **Deployment Summary**: Displays a **detailed status report** post-deployment.
 
 
 
