@@ -1,4 +1,4 @@
-# 🚀 Laravel Deployment Script
+# 🚀 laravel-deploy.sh
 
 ![Laravel Deployment](laravel.gif)
 
