@@ -58,7 +58,7 @@ chmod +x laravel-deploy.sh
 
 ## 🛠️ Deployment Options
 
-### 🌍 **Deploy an Existing Project**
+### 🌍 **Update an Existing Project**
 ```bash
 ./laravel-deploy.sh \
   --project-dir=/var/www/laravel \
